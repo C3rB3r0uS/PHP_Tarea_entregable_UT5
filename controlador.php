@@ -12,30 +12,11 @@ class controlador extends sistema_digital{
         
         parent::__construct($num_serie, $instante_activacion);
        
-        if($procesador instanceof CPU){
-            $this-> procesador = $procesador;
-            
-        }else{
-            
-            echo "La CPU indicada en el argumento del constructor no es válida";
-            
-        }
-        
-        if(is_numeric($ram)){
-            
+            $this-> procesador = $procesador; 
             $this->ram = $ram;
-            
-        }else{
-            
-            echo "El valor de la memoria RAM indicado en el constructor no es correcto";
-            
-        }
-        
-        $this->estado_operativo = "ON";
+            $this->estado_operativo = "ON";
         
     }
-    
-    
-    
+     
 }
 

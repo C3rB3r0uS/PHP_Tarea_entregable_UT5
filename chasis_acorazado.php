@@ -12,22 +12,8 @@ class chasis_acorazado {
         $this->num_serie = $num_serie;
         $this->instante_activacion = $instante_activacion;
 
-        if (strcasecmp($fuente_energia, "hidrogeno") == 0 || strcasecmp($fuente_energia, "uranio") == 0) {
-
-            $this->fuente_energia = $fuente_energia;
-        } else {
-
-            echo "La fuente de energía indicada en el argumento del constructor no es correcta";
-        }
-
-        if (strcasecmp($material_coraza, "japanium") == 0 || strcasecmp($material_coraza, "grafeno")) {
-
-            $this->material_coraza = $material_coraza;
-        } else {
-
-            echo "El material de coraza indicado en el argumento del constructor no es correcto";
-        }
-
+        $this->fuente_energia = $fuente_energia;
+        $this->material_coraza = $material_coraza;
         $this->estado_operativo = "ON";
     }
 
