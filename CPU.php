@@ -25,6 +25,9 @@ class CPU extends sistema_digital {
 
             echo "La categoría de CPU indicada en el argumento del constructor no es válida (" . $categoria_CPU . ")";
         }
+        
+        $this->estado_operativo = "ON";
+        
     }
 
 }
