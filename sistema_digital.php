@@ -27,5 +27,17 @@ class sistema_digital {
 
         $this->estado_operativo = "OFF";
     }
+    
+    function getNum_serie() {
+        return $this->num_serie;
+    }
+
+    function getInstante_activacion() {
+        return $this->instante_activacion;
+    }
+
+    function getEstado_operativo() {
+        return $this->estado_operativo;
+    }
 
 }

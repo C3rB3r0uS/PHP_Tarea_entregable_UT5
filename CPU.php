@@ -1,6 +1,6 @@
 <?php
 
-include "sistema_digital.php";
+require_once "sistema_digital.php";
 
 class CPU extends sistema_digital {
 
@@ -13,6 +13,14 @@ class CPU extends sistema_digital {
         $this->velocidad_CPU = $velocidad_CPU;
         $this->categoria_CPU = $categoria_CPU;
         $this->estado_operativo = "ON";
+    }
+    
+    function getCategoria_CPU() {
+        return $this->categoria_CPU;
+    }
+
+    function getVelocidad_CPU() {
+        return $this->velocidad_CPU;
     }
 
 }

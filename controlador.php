@@ -1,7 +1,7 @@
 <?php
 
-include "sistema_digital.php";
-include "CPU.php";
+require_once "sistema_digital.php";
+require_once "CPU.php";
 
 class controlador extends sistema_digital{
     
@@ -17,6 +17,14 @@ class controlador extends sistema_digital{
             $this->estado_operativo = "ON";
         
     }
-     
+    
+    function getProcesador() {
+        return $this->procesador;
+    }
+
+    function getRam() {
+        return $this->ram;
+    }
+  
 }
 

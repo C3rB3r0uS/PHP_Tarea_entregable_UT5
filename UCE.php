@@ -1,8 +1,8 @@
 <?php
 
-include "sistema_digital.php";
-include "CPU.php";
-include "chasis_acorazado.php";
+require_once "sistema_digital.php";
+require_once "CPU.php";
+require_once "chasis_acorazado.php";
 
 class UCE extends sistema_digital {
 
@@ -15,6 +15,14 @@ class UCE extends sistema_digital {
         $this->procesador = $procesador;
         $this->cuerpo = $cuerpo;
         $this->estado_operativo = "ON";
+    }
+    
+    function getProcesador() {
+        return $this->procesador;
+    }
+
+    function getCuerpo() {
+        return $this->cuerpo;
     }
 
 }

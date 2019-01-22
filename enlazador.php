@@ -1,6 +1,6 @@
 <?php
 
-include "sistema_digital.php";
+require_once "sistema_digital.php";
 
 class enlazador extends sistema_digital {
 
@@ -16,6 +16,18 @@ class enlazador extends sistema_digital {
         $this->ram = $ram;
         $this->conexion = $conexion;
         $this->estado_operativo = "ON";
+    }
+    
+    function getProcesador() {
+        return $this->procesador;
+    }
+
+    function getRam() {
+        return $this->ram;
+    }
+
+    function getConexion() {
+        return $this->conexion;
     }
 
 }

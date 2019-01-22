@@ -81,9 +81,9 @@
                 <?PHP
                 echo "<select name='procesador_cpu'>";
 
-                if ($_SESSION) {
+                if ($_SESSION["array_CPU"]) {
 
-                    foreach ($_SESSION as $key => $value) {
+                    foreach ($_SESSION["array_CPU"] as $key => $value) {
 
                         if ($value instanceof CPU) {
 
@@ -112,22 +112,22 @@
                 <input type="text" name="instante_activacion_controlador" value="" />
                 <br>
                 <label for="procesador_enlazador">CPU usada: </label>
-<?PHP
-echo "<select name='procesador_enlazador'>";
+                <?PHP
+                echo "<select name='procesador_enlazador'>";
 
-if ($_SESSION) {
+                if ($_SESSION["array_CPU"]) {
 
-    foreach ($_SESSION as $key => $value) {
+                    foreach ($_SESSION["array_CPU"] as $key => $value) {
 
-        if ($value instanceof CPU) {
+                        if ($value instanceof CPU) {
 
-            echo "<option value='" . $key . "'>" . $key . "</option>";
-        }
-    }
-}
+                            echo "<option value='" . $key . "'>" . $key . "</option>";
+                        }
+                    }
+                }
 
-echo "</select><br>"
-?>
+                echo "</select><br>"
+                ?>
 
                 <label for="ram_enlazador">Cantidad de memoria RAM: </label>
                 <input type="text" name="ram_enlazador" value="" />
@@ -155,22 +155,22 @@ echo "</select><br>"
                 <br>
 
                 <label for="procesador_uce">CPU usada: </label>
-<?PHP
-echo "<select name='procesador_uce'>";
+                <?PHP
+                echo "<select name='procesador_uce'>";
 
-if ($_SESSION) {
+                if ($_SESSION["array_CPU"]) {
 
-    foreach ($_SESSION as $key => $value) {
+                    foreach ($_SESSION["array_CPU"] as $key => $value) {
 
-        if ($value instanceof CPU) {
+                        if ($value instanceof CPU) {
 
-            echo "<option value='" . $key . "'>" . $key . "</option>";
-        }
-    }
-}
+                            echo "<option value='" . $key . "'>" . $key . "</option>";
+                        }
+                    }
+                }
 
-echo "</select><br>"
-?>
+                echo "</select><br>"
+                ?>
 
                 <label for="chasis_uce">Chasis usado: </label>
                 <?PHP
