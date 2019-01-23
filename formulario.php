@@ -96,7 +96,7 @@
                     echo "<select name='procesador_cpu'>";
 
                     foreach ($_SESSION["array_cpu"] as $num_serie_CPU) {
-//                        echo '<option value=' . unserialize($num_serie_CPU)->getNumero_serie() . '>' . unserialize($num_serie_CPU)->getNumero_serie() . '</option>';
+//                       echo '<option value=' . unserialize($num_serie_CPU)->getNumero_serie() . '>' . unserialize($num_serie_CPU)->getNumero_serie() . '</option>';
                         echo '<option value=' . 1 . '>' . 1 . '</option>';
                     
                     }

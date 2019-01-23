@@ -40,9 +40,9 @@ if (!$_POST) {
 
                 if (!isset($_SESSION["array_sistema_digital"])) {
 
-                    $array_sistema_digital = array();
-                    array_push($array_sistema_digital, serialize($objeto_sd));
-                    $_SESSION["array_sistema_digital"] = $array_sistema_digital;
+                    $_SESSION["array_sistema_digital"] = array();
+                    array_push( $_SESSION["array_sistema_digital"], serialize($objeto_sd));
+
                 }
             }
         }
@@ -66,14 +66,12 @@ if (!$_POST) {
 
                 if (!isset($_SESSION["array_chasis_acorazado"])) {
 
-                    $array_chasis_acorazado = array();
-                    array_push($array_chasis_acorazado, serialize($objeto_ca));
-                    $_SESSION["array_chasis_acorazado"] = $array_chasis_acorazado;
+                    $_SESSION["array_chasis_acorazado"] = array();
+                    array_push($_SESSION["array_chasis_acorazado"], serialize($objeto_ca));
+
                 } else {
 
-                    $array_chasis_acorazado = $_SESSION["array_chasis_acorazado"];
-                    array_push($array_chasis_acorazado, serialize($objeto_ca));
-                    $_SESSION["array_chasis_acorazado"] = $array_chasis_acorazado;
+                    array_push($_SESSION["array_chasis_acorazado"], serialize($objeto_ca));
                     echo "Tamaño array_chasis_acorazado: ". count(($_SESSION["array_chasis_acorazado"])) . "<br>";
                     print_r(($_SESSION["array_chasis_acorazado"]));
                 }
@@ -99,16 +97,15 @@ if (!$_POST) {
               
                 if (isset($_SESSION["array_cpu"])) {
 
-                    $array_cpu = $_SESSION["array_cpu"];
-                    array_push($array_cpu, serialize($objeto_cpu));
-                    $_SESSION["array_cpu"] = $array_cpu;
+                    array_push($_SESSION["array_cpu"], serialize($objeto_cpu));
                     echo "Tamaño array_cpu: ". count(($_SESSION["array_cpu"])) . "<br>";
                     print_r($_SESSION["array_cpu"]);
+                    
                 } else {
 
-                    $array_cpu = array();
-                    array_push($array_cpu, serialize($objeto_cpu));
-                    $_SESSION["array_cpu"] = $array_cpu;
+                    $_SESSION["array_cpu"] = array();
+                    array_push($_SESSION["array_cpu"], serialize($objeto_cpu));
+ 
                 }
             }
         }
@@ -132,17 +129,14 @@ if (!$_POST) {
 
                 if(isset($_SESSION["array_controlador"])) {
 
-                    $array_controlador = $_SESSION["array_controlador"];
-                    array_push($array_controlador, serialize($objeto_controlador));
-                    $_SESSION["array_controlador"] = $array_controlador;
+                    array_push( $_SESSION["array_controlador"], serialize($objeto_controlador));
                     echo "Tamaño array_controlador: ". count(($_SESSION["array_controlador"])) . "<br>";
                     print_r($_SESSION["array_controlador"]);
                     
                 } else {
 
-                    $array_controlador = array();
-                    array_push($array_controlador, serialize($objeto_controlador));
-                    $_SESSION["array_controlador"] = $array_controlador;
+                     $_SESSION["array_controlador"] = array();
+                    array_push( $_SESSION["array_controlador"], serialize($objeto_controlador));
                 }
             }
         }
@@ -168,16 +162,15 @@ if (!$_POST) {
                 
                 if (isset($_SESSION["array_enlazador"])) {
 
-                    $array_enlazador = $_SESSION["array_enlazador"];
-                    array_push($array_enlazador, serialize($objeto_enlazador));
-                    $_SESSION["array_enlazador"] = $array_enlazador;
+                    array_push($_SESSION["array_enlazador"], serialize($objeto_enlazador));
                     echo "Tamaño array_enlazador: ". count($_SESSION["array_enlazador"]) . "<br>";
                     print_r($_SESSION["array_enlazador"]);
+                    
                 } else {
 
-                    $array_enlazador = array();
-                    array_push($array_enlazador, serialize($objeto_enlazador));
-                    $_SESSION["array_enlazador"] = $array_enlazador;
+                    $_SESSION["array_enlazador"] = array();
+                    array_push($_SESSION["array_enlazador"], serialize($objeto_enlazador));
+
                 }
             }
         }
@@ -201,16 +194,15 @@ if (!$_POST) {
 
                 if (isset($_SESSION["array_uce"])) {
 
-                    $array_uce = $_SESSION["array_uce"];
-                    array_push($array_uce, serialize($objeto_uce));
-                    $_SESSION["array_uce"] = $array_uce;
+                    array_push($_SESSION["array_uce"], serialize($objeto_uce));
                     echo "Tamaño array_uce: ". count($_SESSION["array_uce"]) . "<br>";
                     print_r($_SESSION["array_uce"]);
+                    
                 } else {
 
-                    $array_uce = array();
-                    array_push($array_uce, serialize($objeto_uce));
-                    $_SESSION["array_uce"] = $array_uce;
+                    $_SESSION["array_uce"] = array();
+                    array_push($_SESSION["array_uce"], serialize($objeto_uce));
+
                 }
             }
         }
