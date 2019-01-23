@@ -9,7 +9,6 @@ require_once "sistema_digital.php";
 
 session_start();
 
-$array_CPU = array();
 $array_UCE = array();
 $array_controlador = array();
 $array_enlazador = array();
@@ -47,7 +46,7 @@ if (!$_POST) {
                     
                     $array_sistema_digital = array();
 
-                    array_push($array_sistema_digital, $objeto);
+                    array_push($array_sistema_digital, $objeto_sd);
                     $_SESSION["array_sistema_digital"] = serialize($array);
                     
                 } 
@@ -74,11 +73,14 @@ if (!$_POST) {
                
                if(isset($_SESSION("array_chasis_acorazado"))){
                    
-                   
+                   $array_chasis_acorazado = unserialize($_SESSION["array_chasis_acorazado"]);
+                   array_push($array_chasis_acorazado, $objeto_ca);
+                   $_SESSION["array_chasis_acorazado"] = serialize($array_chasis_acorazado);
                    
                }else{
                    
-                   
+                   array_push($array_chasis_acorazado, $objeto_ca);
+                   $_SESSION["array_chasis_acorazado"] = serialize($array_chasis_acorazado);
                    
                }
                
@@ -91,6 +93,36 @@ if (!$_POST) {
     // CREACIÓN DE OBJETOS "CPU"
 
     if (isset($_POST["boton_cpu"])) {
+        
+        if(!empty($_POST["num_serie_cpu"]) && !empty($_POST["instante_activacion_cpu"]) && !empty($_POST["velocidad_cpu"])){
+            
+            $num_serie_cpu = $_POST["num_serie_cpu"];
+            $instante_activacion_cpu = $_POST["instante_activacion_cpu"];
+            $categoria_cpu = $_POST["categoria_cpu"];
+            $velocidad_cpu_cpu = $_POST["velocidad_cpu_cpu"]; 
+            
+            if(is_numeric($instante_activacion_cpu) && is_numeric($velocidad_cpu_cpu)){
+                
+                $objeto_cpu = new CPU($num_serie_cpu, $instante_activacion_cpu, $categoria_cpu, $velocidad_cpu_cpu);
+                
+                $array_CPU = array();
+                
+                 if(isset($_SESSION("array_cpu"))){
+                   
+                   $array_cpu = unserialize($_SESSION["array_cpu"]);
+                   array_push($array_cpu, $objeto_cpu);
+                   $_SESSION["array_cpu"] = serialize($array_cpu);
+                   
+               }else{
+                   
+                   array_push($array_cpu, $objeto_cpu);
+                   $_SESSION["array_cpu"] = serialize($array_cpu);
+                   
+               }
+                
+            }
+            
+        }
         
     }
 
