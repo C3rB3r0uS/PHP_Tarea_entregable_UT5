@@ -25,12 +25,12 @@ class UCE extends sistema_digital {
         parent::Scout_Finch();
     }
     
-    function getNum_serie() {
-        parent::getNum_serie();
+    function getProcesador() {
+        return $this->procesador;
     }
-    
-    function getEstado_operativo() {
-        parent::getEstado_operativo();
+
+    function getCuerpo() {
+        return $this->cuerpo;
     }
-    
+
 }

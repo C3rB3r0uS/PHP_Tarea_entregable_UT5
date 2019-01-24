@@ -10,15 +10,19 @@ require_once "sistema_digital.php";
 session_start();
 
 if (!$_POST) {
-    
-    echo "POST VACÍO";
 
     include "formulario.php";
 } else {
-
-    echo "POST CON CONTENIDO";
-    print_r($_POST);
-    include "formulario.php";
+   
+     // ELIMINAR SESIÓN
+    
+    if(isset($_POST["destruir_sesion"])){
+        
+        unset($_SESSION);
+        $_SESSION = array();
+        echo "<b>Sesión borrada</b><br>";
+        
+    }
 
     // CREACIÓN DE OBJETOS "SISTEMA DIGITAL"
 
@@ -34,13 +38,11 @@ if (!$_POST) {
             // Hago una comprobación de tipos de los atributos y creo un objeto de la clase sistema_digital
 
             if (is_numeric($instante_activacion_sd)) {
-                
-                echo "hola";
 
                 $objeto_sd = new sistema_digital($num_serie_sd, $instante_activacion_sd);
                 echo "<b>Se ha creado un objeto CPU </b><br>";
 
-                // Creo variable de sesión y lo referencio a un array que recoge a los objetos de esta clase.
+                // Creo variable de sesión y la inicializo como array
                 // Al estar limitado a un objeto del tipo "sistema digital", si la variable de sesión existe
                 // es que esta variable recoge el array con un objeto en su interior.
 
@@ -165,7 +167,6 @@ if (!$_POST) {
                 $objeto_enlazador = new enlazador($num_serie_enlazador, $instante_activacion_enlazador, $procesador_enlazador, $ram_enlazador, $conexion_enlazador);
                 echo "<b>Se ha creado un objeto enlazador</b><br>";
                 
-                
                 if (isset($_SESSION["array_enlazador"])) {
 
                     array_push($_SESSION["array_enlazador"], serialize($objeto_enlazador));
@@ -213,4 +214,7 @@ if (!$_POST) {
             }
         }
     }
+    
+    include "formulario.php";
+    
 }

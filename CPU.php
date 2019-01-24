@@ -23,12 +23,16 @@ class CPU extends sistema_digital {
         parent::Scout_Finch();
     }
     
-    function getNum_serie() {
-        parent::getNum_serie();
+    public function getNum_serie() {
+        return parent::getNum_serie();
     }
     
-    function getEstado_operativo() {
-        parent::getEstado_operativo();
+    function getCategoria_CPU() {
+        return $this->categoria_CPU;
+    }
+
+    function getVelocidad_CPU() {
+        return $this->velocidad_CPU;
     }
 
 }
