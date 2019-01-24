@@ -87,24 +87,22 @@
                 <input type="text" name="instante_activacion_controlador" value="" />
                 <br>
                 <label for="procesador_cpu">CPU usada: </label>
+                <select name="procesador_cpu">
 
                 <?PHP
                 require_once 'CPU.php';
                 
                 if (isset($_SESSION["array_cpu"])) {
-                    
-                    echo "<select name='procesador_cpu'>";
-
+                   
                     foreach ($_SESSION["array_cpu"] as $num_serie_CPU) {
 //                       echo '<option value=' . unserialize($num_serie_CPU)->getNumero_serie() . '>' . unserialize($num_serie_CPU)->getNumero_serie() . '</option>';
-                        echo '<option value=' . 1 . '>' . 1 . '</option>';
-                    
+                   
                     }
-
-                    echo "</select><br>";
-                    
+  
                 }
                 ?>
+                    
+                </select><br>
 
                 <label for="ram_controlador">Cantidad de memoria RAM: </label>
                 <input type="text" name="ram_controlador" value="" />

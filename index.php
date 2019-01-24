@@ -10,10 +10,14 @@ require_once "sistema_digital.php";
 session_start();
 
 if (!$_POST) {
+    
+    echo "POST VACÍO";
 
     include "formulario.php";
 } else {
 
+    echo "POST CON CONTENIDO";
+    print_r($_POST);
     include "formulario.php";
 
     // CREACIÓN DE OBJETOS "SISTEMA DIGITAL"
@@ -30,6 +34,8 @@ if (!$_POST) {
             // Hago una comprobación de tipos de los atributos y creo un objeto de la clase sistema_digital
 
             if (is_numeric($instante_activacion_sd)) {
+                
+                echo "hola";
 
                 $objeto_sd = new sistema_digital($num_serie_sd, $instante_activacion_sd);
                 echo "<b>Se ha creado un objeto CPU </b><br>";

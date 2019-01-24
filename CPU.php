@@ -12,19 +12,23 @@ class CPU extends sistema_digital {
 
         $this->categoria_CPU = $categoria_CPU;
         $this->velocidad_CPU = $velocidad_CPU;
-        $this->estado_operativo = "ON";
-    }
-    
-    function getCategoria_CPU() {
-        return $this->categoria_CPU;
-    }
 
-    function getVelocidad_CPU() {
-        return $this->velocidad_CPU;
     }
     
-    public function getNum_serie() {
-        return parent::getNum_serie();
+    function conmutar_Estado() {
+        parent::conmutar_Estado();
+    }
+    
+    function Scout_Finch() {
+        parent::Scout_Finch();
+    }
+    
+    function getNum_serie() {
+        parent::getNum_serie();
+    }
+    
+    function getEstado_operativo() {
+        parent::getEstado_operativo();
     }
 
 }

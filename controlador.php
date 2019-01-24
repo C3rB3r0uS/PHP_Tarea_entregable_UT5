@@ -14,17 +14,31 @@ class controlador extends sistema_digital{
        
             $this-> procesador = $procesador; 
             $this->ram = $ram;
-            $this->estado_operativo = "ON";
         
     }
     
-    function getProcesador() {
-        return $this->procesador;
+       function conmutar_Estado() {
+           parent::conmutar_Estado();
+        
+        }
+        
+        function Scout_Finch() {
+            parent::Scout_Finch();
+        }
+        
+        function getNum_serie() {
+            parent::getNum_serie();
+        }
+        
+        function getEstado_operativo() {
+            parent::getEstado_operativo();
+        }
+        
     }
+    
 
-    function getRam() {
-        return $this->ram;
-    }
   
-}
+
+
+
 

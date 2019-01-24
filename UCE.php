@@ -17,12 +17,20 @@ class UCE extends sistema_digital {
         $this->estado_operativo = "ON";
     }
     
-    function getProcesador() {
-        return $this->procesador;
+    function conmutar_Estado() {
+        parent::conmutar_Estado();
     }
-
-    function getCuerpo() {
-        return $this->cuerpo;
+    
+    function Scout_Finch() {
+        parent::Scout_Finch();
     }
-
+    
+    function getNum_serie() {
+        parent::getNum_serie();
+    }
+    
+    function getEstado_operativo() {
+        parent::getEstado_operativo();
+    }
+    
 }
