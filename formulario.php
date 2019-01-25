@@ -20,6 +20,9 @@
                 <input type="submit" name="boton_sd" value="Crear objeto" />
 
             </fieldset>
+        </form>
+
+        <form method="POST" action="<?PHP $_SERVER["PHP_SELF"] ?>">
 
             <fieldset>
                 <legend><b>Creación de chasis acorazado</b></legend>
@@ -45,6 +48,9 @@
                 <input type="submit" name="boton_ca" value="Crear objeto"/>
 
             </fieldset>
+        </form>
+
+        <form method="POST" action="<?PHP $_SERVER["PHP_SELF"] ?>">
 
             <fieldset>
                 <legend><b>Creación de CPUs</b></legend>
@@ -67,40 +73,46 @@
                 <input type="submit" name="boton_cpu" value="Crear objeto"/>
 
             </fieldset>
+        </form>
+
+        <form method="POST" action="<?PHP $_SERVER["PHP_SELF"] ?>">
 
             <fieldset>
                 <legend><b>Creación de controladores: </b></legend>
 
-                <label for="num_serie_enlazador">Número de serie: </label>
-                <input type="text" name="num_serie_enlazador" value="" />
+                <label for="num_serie_controlador">Número de serie: </label>
+                <input type="text" name="num_serie_controlador" value="" />
                 <br>
-                <label for="instante_activacion_enlazador">Instante de activación: </label>
-                <input type="text" name="instante_activacion_enlazador" value="" />
+                <label for="instante_activacion_controlador">Instante de activación: </label>
+                <input type="text" name="instante_activacion_controlador" value="" />
                 <br>
                 <label for="procesador_cpu">CPU usada: </label>
+                
                 <?PHP
+                require_once 'CPU.php';
+
                 echo "<select name='procesador_cpu'>";
 
-                if ($_SESSION["array_CPU"]) {
+                if (isset($_SESSION["array_cpu"])) {
 
-                    foreach ($_SESSION["array_CPU"] as $key => $value) {
+                    $array_cpu = unserialize($_SESSION["array_cpu"]);
 
-                        if ($value instanceof CPU) {
-
-                            echo "<option value='" . $key . "'>" . $key . "</option>";
-                        }
-                    }
+                   echo "***********************";
                 }
 
-                echo "</select>"
+                echo "</select><br>";
                 ?>
-                <br>
-                <label for="velocidad_cpu_controlador">Velocidad de CPU: </label>
-                <input type="text" name="velocidad_cpu_controlador" value="" />
+
+                <label for="ram_controlador">Cantidad de memoria RAM: </label>
+                <input type="text" name="ram_controlador" value="" />
                 <br>
                 <input type="submit" name="boton_controlador" value="Crear objeto"/>
 
             </fieldset>
+
+        </form>
+
+        <form method="POST" action="<?PHP $_SERVER["PHP_SELF"] ?>">
 
             <fieldset>
                 <legend><b>Creación de enlazadores</b></legend>
@@ -113,20 +125,29 @@
                 <br>
                 <label for="procesador_enlazador">CPU usada: </label>
                 <?PHP
+                require_once 'CPU.php';
+
                 echo "<select name='procesador_enlazador'>";
 
-                if ($_SESSION["array_CPU"]) {
+                if (isset($_SESSION["array_CPU"])) {
 
-                    foreach ($_SESSION["array_CPU"] as $key => $value) {
+                    $array_cpu = unserialize($_SESSION["array_cpu"]);
 
-                        if ($value instanceof CPU) {
-
-                            echo "<option value='" . $key . "'>" . $key . "</option>";
+//                    for ($i = 0; $i < count($array_cpu); $i++) {
+//
+//                        echo "<option value=" . "'CPU " . $i . "'>" .
+//                        "'CPU " . $i . " categoría: " . $array_cpu[i]->getCategoria_CPU() . " velocidad: " . $array_cpu[i]->getVelocidad_CPU();
+//
+//                        echo "</option>";
+//                    }
+                    foreach($array_cpu as $cpu){
+                        if ($cpu instanceof CPU) {
+                             echo "<option value=".$cpu->getNum_serie().">".$cpu->getNum_serie()."</option>";
                         }
                     }
                 }
 
-                echo "</select><br>"
+                echo "</select>";
                 ?>
 
                 <label for="ram_enlazador">Cantidad de memoria RAM: </label>
@@ -142,12 +163,15 @@
                 <input type="submit" name="boton_enlazador" value="Crear objeto"/>
 
             </fieldset>
+        </form>
+
+        <form method="POST" action="<?PHP $_SERVER["PHP_SELF"] ?>">
 
             <fieldset>
 
                 <legend><b>Creación de UCE</b></legend>
 
-                <label for="num_serie_ucer">Número de serie: </label>
+                <label for="num_serie_uce">Número de serie: </label>
                 <input type="text" name="num_serie_uce" value="" />
                 <br>
                 <label for="instante_activacion_uce">Instante de activación: </label>
@@ -169,7 +193,7 @@
                     }
                 }
 
-                echo "</select><br>"
+                echo "</select><br>";
                 ?>
 
                 <label for="chasis_uce">Chasis usado: </label>
@@ -192,6 +216,8 @@
                 <input type="submit" name="boton_uce" value="Crear objeto"/>
 
             </fieldset>
+
+        </form>     
 
     </body>
 </html>

@@ -22,5 +22,10 @@ class CPU extends sistema_digital {
     function getVelocidad_CPU() {
         return $this->velocidad_CPU;
     }
+    
+    public function getNum_serie() {
+        return parent::getNum_serie();
+    }
+
 
 }
