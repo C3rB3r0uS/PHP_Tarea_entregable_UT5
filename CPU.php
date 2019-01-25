@@ -10,8 +10,8 @@ class CPU extends sistema_digital {
     function __construct($num_serie, $instante_activacion, $categoria_CPU, $velocidad_CPU) {
         parent::__construct($num_serie, $instante_activacion);
 
-        $this->velocidad_CPU = $velocidad_CPU;
         $this->categoria_CPU = $categoria_CPU;
+        $this->velocidad_CPU = $velocidad_CPU;
         $this->estado_operativo = "ON";
     }
     
