@@ -87,7 +87,7 @@
                 <input type="text" name="instante_activacion_controlador" value="" />
                 <br>
                 <label for="procesador_cpu">CPU usada: </label>
-                
+
                 <?PHP
                 require_once 'CPU.php';
 
@@ -97,7 +97,6 @@
 
                     $array_cpu = unserialize($_SESSION["array_cpu"]);
 
-                   echo "***********************";
                 }
 
                 echo "</select><br>";
@@ -127,11 +126,11 @@
                 <?PHP
                 require_once 'CPU.php';
 
-                echo "<select name='procesador_enlazador'>";
-
                 if (isset($_SESSION["array_CPU"])) {
 
                     $array_cpu = unserialize($_SESSION["array_cpu"]);
+
+                    echo "<select name='procesador_enlazador'>";
 
 //                    for ($i = 0; $i < count($array_cpu); $i++) {
 //
@@ -140,16 +139,17 @@
 //
 //                        echo "</option>";
 //                    }
-                    foreach($array_cpu as $cpu){
-                        if ($cpu instanceof CPU) {
-                             echo "<option value=".$cpu->getNum_serie().">".$cpu->getNum_serie()."</option>";
-                        }
-                    }
-                }
 
-                echo "</select>";
+                    foreach ($array_cpu as $num_serie) {
+
+                        echo "<option value=" . $num_serie->getNum_serie() . ">" . $num_serie->getNum_serie() . "</option>";
+                    }
+
+                    echo "</select>";
+                }
                 ?>
 
+                <br>
                 <label for="ram_enlazador">Cantidad de memoria RAM: </label>
                 <input type="text" name="ram_enlazador" value="" />
                 <br>
@@ -179,22 +179,22 @@
                 <br>
 
                 <label for="procesador_uce">CPU usada: </label>
-                <?PHP
-                echo "<select name='procesador_uce'>";
+<?PHP
+echo "<select name='procesador_uce'>";
 
-                if ($_SESSION["array_CPU"]) {
+if ($_SESSION["array_CPU"]) {
 
-                    foreach ($_SESSION["array_CPU"] as $key => $value) {
+    foreach ($_SESSION["array_CPU"] as $key => $value) {
 
-                        if ($value instanceof CPU) {
+        if ($value instanceof CPU) {
 
-                            echo "<option value='" . $key . "'>" . $key . "</option>";
-                        }
-                    }
-                }
+            echo "<option value='" . $key . "'>" . $key . "</option>";
+        }
+    }
+}
 
-                echo "</select><br>";
-                ?>
+echo "</select><br>";
+?>
 
                 <label for="chasis_uce">Chasis usado: </label>
                 <?PHP

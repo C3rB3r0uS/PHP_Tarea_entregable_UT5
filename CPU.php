@@ -27,5 +27,4 @@ class CPU extends sistema_digital {
         return parent::getNum_serie();
     }
 
-
 }

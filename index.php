@@ -32,6 +32,7 @@ if (!$_POST) {
             if (is_numeric($instante_activacion_sd)) {
 
                 $objeto_sd = new sistema_digital($num_serie_sd, $instante_activacion_sd);
+                echo "Se ha creado un objeto CPU <br>";
 
                 // Creo variable de sesión y lo referencio a un array que recoge a los objetos de esta clase.
                 // Al estar limitado a un objeto del tipo "sistema digital", si la variable de sesión existe
@@ -40,9 +41,8 @@ if (!$_POST) {
                 if (!isset($_SESSION["array_sistema_digital"])) {
 
                     $array_sistema_digital = array();
-
                     array_push($array_sistema_digital, $objeto_sd);
-                    $_SESSION["array_sistema_digital"] = serialize($array);
+                    $_SESSION["array_sistema_digital"] = serialize($array_sistema_digital);
                 }
             }
         }
@@ -62,11 +62,11 @@ if (!$_POST) {
             if (is_numeric($instante_activacion_ca)) {
 
                 $objeto_ca = new chasis_acorazado($num_serie_ca, $instante_activacion_ca, $fuente_energia_ca, $material_coraza_ca);
-
-                $array_chasis_acorazado = array();
+                echo "Se ha creado un objeto chasis acorazado<br>";
 
                 if (!isset($_SESSION["array_chasis_acorazado"])) {
 
+                    $array_chasis_acorazado = array();
                     array_push($array_chasis_acorazado, $objeto_ca);
                     $_SESSION["array_chasis_acorazado"] = serialize($array_chasis_acorazado);
                 } else {
@@ -74,6 +74,8 @@ if (!$_POST) {
                     $array_chasis_acorazado = unserialize($_SESSION["array_chasis_acorazado"]);
                     array_push($array_chasis_acorazado, $objeto_ca);
                     $_SESSION["array_chasis_acorazado"] = serialize($array_chasis_acorazado);
+                    echo "Tamaño array_chasis_acorazado: ". count(unserialize($_SESSION["array_chasis_acorazado"])) . "<br>";
+                    print_r(unserialize($_SESSION["array_chasis_acorazado"]));
                 }
             }
         }
@@ -93,12 +95,15 @@ if (!$_POST) {
             if (is_numeric($instante_activacion_cpu) && is_numeric($velocidad_cpu_cpu)) {
 
                 $objeto_cpu = new CPU($num_serie_cpu, $instante_activacion_cpu, $categoria_cpu, $velocidad_cpu_cpu);
-
+                echo "Se ha creado un objeto CPU <br>";
+              
                 if (isset($_SESSION["array_cpu"])) {
 
                     $array_cpu = unserialize($_SESSION["array_cpu"]);
                     array_push($array_cpu, $objeto_cpu);
                     $_SESSION["array_cpu"] = serialize($array_cpu);
+                    echo "Tamaño array_cpu: ". count(unserialize($_SESSION["array_cpu"])) . "<br>";
+                    print_r(unserialize($_SESSION["array_cpu"]));
                 } else {
 
                     $array_cpu = array();
@@ -123,12 +128,16 @@ if (!$_POST) {
             if (is_numeric($instante_activacion_controlador) && is_numeric($ram_controlador)) {
 
                 $objeto_controlador = new controlador($num_serie_controlador, $instante_activacion_controlador, $procesador_cpu, $ram_controlador);
+                echo "Se ha creado un objeto controlador<br>";
 
-                if (isset($_SESSION["array_controlador"])) {
+                if(isset($_SESSION["array_controlador"])) {
 
                     $array_controlador = unserialize($_SESSION["array_controlador"]);
                     array_push($array_controlador, $objeto_controlador);
                     $_SESSION["array_controlador"] = serialize($array_controlador);
+                    echo "Tamaño array_controlador: ". count(unserialize($_SESSION["array_controlador"])) . "<br>";
+                    print_r(unserialize($_SESSION["array_controlador"]));
+                    
                 } else {
 
                     $array_controlador = array();
@@ -154,12 +163,16 @@ if (!$_POST) {
             if (is_numeric($instante_activacion_enlazador) && is_numeric($ram_enlazador)) {
 
                 $objeto_enlazador = new enlazador($num_serie_enlazador, $instante_activacion_enlazador, $procesador_enlazador, $ram_enlazador, $conexion_enlazador);
-
+                echo "Se ha creado un objeto enlazador<br>";
+                
+                
                 if (isset($_SESSION["array_enlazador"])) {
 
                     $array_enlazador = unserialize($_SESSION["array_enlazador"]);
                     array_push($array_enlazador, $objeto_enlazador);
                     $_SESSION["array_enlazador"] = serialize($array_enlazador);
+                    echo "Tamaño array_enlazador: ". count(unserialize($_SESSION["array_enlazador"])) . "<br>";
+                    print_r(unserialize($_SESSION["array_enlazador"]));
                 } else {
 
                     $array_enlazador = array();
@@ -184,12 +197,15 @@ if (!$_POST) {
             if (is_numeric($instante_activacion_uce)) {
 
                 $objeto_uce = new UCE($num_serie_uce, $instante_activacion_uce, $procesador_uce, $chasis_uce);
+                echo "Se ha creado un objeto UCE<br>";
 
                 if (isset($_SESSION["array_uce"])) {
 
                     $array_uce = unserialize($_SESSION["array_uce"]);
                     array_push($array_uce, $objeto_uce);
                     $_SESSION["array_uce"] = serialize($array_uce);
+                    echo "Tamaño array_uce: ". count(unserialize($_SESSION["array_uce"])) . "<br>";
+                    print_r(unserialize($_SESSION["array_uce"]));
                 } else {
 
                     $array_uce = array();
