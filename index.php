@@ -122,13 +122,23 @@ if (!$_POST) {
     // CREACIÓN DE OBJETOS "CONTROLADOR"
 
     if (isset($_POST["boton_controlador"])) {
-
-        if (!empty($_POST["num_serie_controlador"]) && !empty($_POST["instante_activacion_controlador"]) && !empty($_POST["velocidad_cpu_controlador"])) {
-
+        
+        if (!empty($_POST["num_serie_controlador"]) && !empty($_POST["instante_activacion_controlador"]) && !empty($_POST["ram_controlador"])) {
+      
             $num_serie_controlador = $_POST["num_serie_controlador"];
             $instante_activacion_controlador = $_POST["instante_activacion_controlador"];
-            $procesador_cpu = $_POST["procesador_cpu"];
+            $procesador_cpu;
             $ram_controlador = $_POST["ram_controlador"];
+           
+             foreach ($_SESSION["array_cpu"] as $cpu){
+                                  
+                 if($_POST["procesador_cpu"] ==  unserialize($cpu)->getNum_serie()){
+                     
+                     $procesador_cpu = unserialize($cpu);
+                     
+                 }
+                             
+             }
 
             if (is_numeric($instante_activacion_controlador) && is_numeric($ram_controlador)) {
 
@@ -153,17 +163,27 @@ if (!$_POST) {
     // CREACIÓN DE OBJETOS "ENLAZADOR"
 
     if (isset($_POST["boton_enlazador"])) {
-
+        
         if (isset($_POST["num_serie_enlazador"]) && isset($_POST["instante_activacion_enlazador"]) && isset($_POST["ram_enlazador"])) {
 
             $num_serie_enlazador = $_POST["num_serie_enlazador"];
             $instante_activacion_enlazador = $_POST["instante_activacion_enlazador"];
-            $procesador_enlazador = $_POST["procesador_enlazador"];
+            $procesador_enlazador;
             $ram_enlazador = $_POST["ram_enlazador"];
             $conexion_enlazador = $_POST["conexion_enlazador"];
+            
+                foreach ($_SESSION["array_cpu"] as $cpu){
+                                  
+                 if($_POST["procesador_enlazador"] ==  unserialize($cpu)->getNum_serie()){
+                     
+                     $procesador_enlazador = unserialize($cpu);
+                     
+                 }
+                             
+             }
 
             if (is_numeric($instante_activacion_enlazador) && is_numeric($ram_enlazador)) {
-
+                             
                 $objeto_enlazador = new enlazador($num_serie_enlazador, $instante_activacion_enlazador, $procesador_enlazador, $ram_enlazador, $conexion_enlazador);
                 echo "<b>Se ha creado un objeto enlazador</b><br>";
                 
@@ -191,8 +211,28 @@ if (!$_POST) {
 
             $num_serie_uce = $_POST["num_serie_uce"];
             $instante_activacion_uce = $_POST["instante_activacion_uce"];
-            $procesador_uce = $_POST["procesador_uce"];
-            $chasis_uce = $_POST["chasis_uce"];
+            $procesador_uce;
+            $chasis_uce;
+            
+              foreach ($_SESSION["array_cpu"] as $cpu){
+                                  
+                 if($_POST["procesador_uce"] ==  unserialize($cpu)->getNum_serie()){
+                     
+                     $procesador_uce = unserialize($cpu);
+                     
+                 }
+                             
+             }
+             
+               foreach ($_SESSION["array_chasis_acorazado"] as $chasis){
+                                  
+                 if($_POST["chasis_uce"] ==  unserialize($chasis)->getNum_serie()){
+                     
+                     $chasis_uce = unserialize($chasis);
+                     
+                 }
+                             
+             }
 
             if (is_numeric($instante_activacion_uce)) {
 

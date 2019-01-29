@@ -109,7 +109,7 @@
                     
                     }
 
-                    echo "</select><br>";
+                    echo "</select>";
                     
                 }
                 ?>
@@ -132,7 +132,7 @@
                 <input type="text" name="num_serie_enlazador" value="" />
                 <br>
                 <label for="instante_activacion_enlazador">Instante de activación: </label>
-                <input type="text" name="instante_activacion_controlador" value="" />
+                <input type="text" name="instante_activacion_enlazador" value="" />
                 <br>
                 <label for="procesador_enlazador">CPU usada: </label>
                 
