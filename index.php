@@ -13,8 +13,16 @@ if (!$_POST) {
 
     include "formulario.php";
 } else {
-
-    include "formulario.php";
+   
+     // ELIMINAR SESIÓN
+    
+    if(isset($_POST["destruir_sesion"])){
+        
+        unset($_SESSION);
+        $_SESSION = array();
+        echo "<b>Sesión borrada</b><br>";
+        
+    }
 
     // CREACIÓN DE OBJETOS "SISTEMA DIGITAL"
 
@@ -159,7 +167,6 @@ if (!$_POST) {
                 $objeto_enlazador = new enlazador($num_serie_enlazador, $instante_activacion_enlazador, $procesador_enlazador, $ram_enlazador, $conexion_enlazador);
                 echo "<b>Se ha creado un objeto enlazador</b><br>";
                 
-                
                 if (isset($_SESSION["array_enlazador"])) {
 
                     array_push($_SESSION["array_enlazador"], serialize($objeto_enlazador));
@@ -207,4 +214,7 @@ if (!$_POST) {
             }
         }
     }
+    
+    include "formulario.php";
+    
 }

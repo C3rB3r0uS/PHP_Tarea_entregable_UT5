@@ -2,9 +2,9 @@
 
 class sistema_digital {
 
-    private $num_serie;
-    private $instante_activacion;
-    private $estado_operativo;
+    protected $num_serie;
+    protected $instante_activacion;
+    protected $estado_operativo;
 
     function __construct($num_serie, $instante_activacion) {
         $this->num_serie = $num_serie;

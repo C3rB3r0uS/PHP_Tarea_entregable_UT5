@@ -12,7 +12,7 @@ class CPU extends sistema_digital {
 
         $this->categoria_CPU = $categoria_CPU;
         $this->velocidad_CPU = $velocidad_CPU;
-        $this->estado_operativo = "ON";
+
     }
     
     function conmutar_Estado() {

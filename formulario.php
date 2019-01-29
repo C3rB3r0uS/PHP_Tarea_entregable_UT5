@@ -5,6 +5,14 @@
     <body>
 
         <h1>Proyecto Control</h1>
+        
+        <form method="POST" action="<?PHP $_SERVER["PHP_SELF"] ?>">
+        
+        <label for="destruir_sesion">Destruir sesión: </label>
+        <input type="submit" name="destruir_sesion" value="Borrar sesión" />
+        <br><br>
+        
+       </form>
 
         <form method="POST" action="<?PHP $_SERVER["PHP_SELF"] ?>">
 
@@ -94,10 +102,10 @@
                 if (isset($_SESSION["array_cpu"])) {
                     
                     echo "<select name='procesador_cpu'>";
-
-                    foreach ($_SESSION["array_cpu"] as $num_serie_CPU) {
-//                       echo '<option value=' . unserialize($num_serie_CPU)->getNumero_serie() . '>' . unserialize($num_serie_CPU)->getNumero_serie() . '</option>';
-                        echo '<option value=' . 1 . '>' . 1 . '</option>';
+                    
+                    foreach ($_SESSION["array_cpu"] as $cpu) {
+                        
+                    echo "<option value='" . unserialize($cpu)->getNum_serie() . "'>" . unserialize($cpu)->getNum_serie() . "</option>";
                     
                     }
 
@@ -105,7 +113,7 @@
                     
                 }
                 ?>
-
+                <br>
                 <label for="ram_controlador">Cantidad de memoria RAM: </label>
                 <input type="text" name="ram_controlador" value="" />
                 <br>
@@ -127,33 +135,25 @@
                 <input type="text" name="instante_activacion_controlador" value="" />
                 <br>
                 <label for="procesador_enlazador">CPU usada: </label>
+                
                 <?PHP
                 require_once 'CPU.php';
-
-                if (isset($_SESSION["array_CPU"])) {
-
-                    $array_cpu = unserialize($_SESSION["array_cpu"]);
-
+                
+                if (isset($_SESSION["array_cpu"])) {
+                    
                     echo "<select name='procesador_enlazador'>";
-
-//                    for ($i = 0; $i < count($array_cpu); $i++) {
-//
-//                        echo "<option value=" . "'CPU " . $i . "'>" .
-//                        "'CPU " . $i . " categoría: " . $array_cpu[i]->getCategoria_CPU() . " velocidad: " . $array_cpu[i]->getVelocidad_CPU();
-//
-//                        echo "</option>";
-//                    }
-
-                    foreach ($array_cpu as $num_serie) {
-
-                        echo "<option value=" . $num_serie->getNum_serie() . ">" . $num_serie->getNum_serie() . "</option>";
+                    
+                    foreach ($_SESSION["array_cpu"] as $cpu) {
+                        
+                    echo "<option value='" . unserialize($cpu)->getNum_serie() . "'>" . unserialize($cpu)->getNum_serie() . "</option>";
+                    
                     }
 
-                    echo "</select>";
+                    echo "</select><br>";
+                    
                 }
                 ?>
-
-                <br>
+ 
                 <label for="ram_enlazador">Cantidad de memoria RAM: </label>
                 <input type="text" name="ram_enlazador" value="" />
                 <br>
@@ -184,38 +184,40 @@
 
                 <label for="procesador_uce">CPU usada: </label>
                 <?PHP
-                echo "<select name='procesador_uce'>";
-
-                if ($_SESSION["array_CPU"]) {
-
-                    foreach ($_SESSION["array_CPU"] as $key => $value) {
-
-                        if ($value instanceof CPU) {
-
-                            echo "<option value='" . $key . "'>" . $key . "</option>";
-                        }
+                require_once 'CPU.php';
+                
+                if (isset($_SESSION["array_cpu"])) {
+                    
+                    echo "<select name='procesador_uce'>";
+                    
+                    foreach ($_SESSION["array_cpu"] as $cpu) {
+                        
+                    echo "<option value='" . unserialize($cpu)->getNum_serie() . "'>" . unserialize($cpu)->getNum_serie() . "</option>";
+                    
                     }
-                }
 
-                echo "</select><br>";
+                    echo "</select><br>";
+                    
+                }
                 ?>
 
                 <label for="chasis_uce">Chasis usado: </label>
-                <?PHP
-                echo "<select name='chasis_uce'>";
-
-                if ($_SESSION) {
-
-                    foreach ($_SESSION as $key => $value) {
-
-                        if ($value instanceof chasis_acorazado) {
-
-                            echo "<option value='" . $key . "'>" . $key . "</option>";
-                        }
+               <?PHP
+                require_once 'CPU.php';
+                
+                if (isset($_SESSION["array_chasis_acorazado"])) {
+                    
+                    echo "<select name='chasis_uce'>";
+                    
+                    foreach ($_SESSION["array_chasis_acorazado"] as $chasis) {
+                        
+                    echo "<option value='" . unserialize($chasis)->getNum_serie() . "'>" . unserialize($chasis)->getNum_serie() . "</option>";
+                    
                     }
-                }
 
-                echo "</select><br>"
+                    echo "</select><br>";
+                    
+                }
                 ?>
                 <input type="submit" name="boton_uce" value="Crear objeto"/>
 
