@@ -5,14 +5,14 @@
     <body>
 
         <h1>Proyecto Control</h1>
-        
+
         <form method="POST" action="<?PHP $_SERVER["PHP_SELF"] ?>">
-        
-        <label for="destruir_sesion">Destruir sesión: </label>
-        <input type="submit" name="destruir_sesion" value="Borrar sesión" />
-        <br><br>
-        
-       </form>
+
+            <label for="destruir_sesion">Destruir sesión: </label>
+            <input type="submit" name="destruir_sesion" value="Borrar sesión"/>
+            <br><br>
+
+        </form>
 
         <form method="POST" action="<?PHP $_SERVER["PHP_SELF"] ?>">
 
@@ -25,7 +25,7 @@
                 <label for="instante_activacion_sd">Instante de activación: </label>
                 <input type="text" name="instante_activacion_sd" value="" />
                 <br>
-                <input type="submit" name="boton_sd" value="Crear objeto" />
+                <input type="submit" name="boton_sd" value="Crear objeto" <?PHP if(isset($_SESSION["HLL"]) || isset($_SESSION["array_sistema_digital"])) echo "disabled"?>/>
 
             </fieldset>
         </form>
@@ -53,7 +53,7 @@
                     <option value="grafeno">Grafeno</option>
                 </select>
                 <br>    
-                <input type="submit" name="boton_ca" value="Crear objeto"/>
+                <input type="submit" name="boton_ca" value="Crear objeto" <?PHP if(isset($_SESSION["HLL"])) echo "disabled"?>/>
 
             </fieldset>
         </form>
@@ -78,7 +78,7 @@
                 <label for="velocidad_cpu_cpu">Velocidad de CPU: </label>
                 <input type="text" name="velocidad_cpu_cpu" value="" />
                 <br>
-                <input type="submit" name="boton_cpu" value="Crear objeto"/>
+                <input type="submit" name="boton_cpu" value="Crear objeto" <?PHP if(isset($_SESSION["HLL"])) echo "disabled"?>/>
 
             </fieldset>
         </form>
@@ -98,26 +98,24 @@
 
                 <?PHP
                 require_once 'CPU.php';
-                
+
                 if (isset($_SESSION["array_cpu"])) {
-                    
+
                     echo "<select name='procesador_cpu'>";
-                    
+
                     foreach ($_SESSION["array_cpu"] as $cpu) {
-                        
-                    echo "<option value='" . unserialize($cpu)->getNum_serie() . "'>" . unserialize($cpu)->getNum_serie() . "</option>";
-                    
+
+                        echo "<option value='" . unserialize($cpu)->getNum_serie() . "'>" . unserialize($cpu)->getNum_serie() . "</option>";
                     }
 
                     echo "</select>";
-                    
                 }
                 ?>
                 <br>
                 <label for="ram_controlador">Cantidad de memoria RAM: </label>
                 <input type="text" name="ram_controlador" value="" />
                 <br>
-                <input type="submit" name="boton_controlador" value="Crear objeto"/>
+                <input type="submit" name="boton_controlador" value="Crear objeto" <?PHP if(isset($_SESSION["HLL"])) echo "disabled"?>/>
 
             </fieldset>
 
@@ -135,25 +133,23 @@
                 <input type="text" name="instante_activacion_enlazador" value="" />
                 <br>
                 <label for="procesador_enlazador">CPU usada: </label>
-                
+
                 <?PHP
                 require_once 'CPU.php';
-                
+
                 if (isset($_SESSION["array_cpu"])) {
-                    
+
                     echo "<select name='procesador_enlazador'>";
-                    
+
                     foreach ($_SESSION["array_cpu"] as $cpu) {
-                        
-                    echo "<option value='" . unserialize($cpu)->getNum_serie() . "'>" . unserialize($cpu)->getNum_serie() . "</option>";
-                    
+
+                        echo "<option value='" . unserialize($cpu)->getNum_serie() . "'>" . unserialize($cpu)->getNum_serie() . "</option>";
                     }
 
                     echo "</select><br>";
-                    
                 }
                 ?>
- 
+
                 <label for="ram_enlazador">Cantidad de memoria RAM: </label>
                 <input type="text" name="ram_enlazador" value="" />
                 <br>
@@ -164,7 +160,7 @@
                     <option value="laser">Láser</option>
                 </select>
                 <br>
-                <input type="submit" name="boton_enlazador" value="Crear objeto"/>
+                <input type="submit" name="boton_enlazador" value="Crear objeto" <?PHP if(isset($_SESSION["HLL"])) echo "disabled"?>/>
 
             </fieldset>
         </form>
@@ -185,45 +181,47 @@
                 <label for="procesador_uce">CPU usada: </label>
                 <?PHP
                 require_once 'CPU.php';
-                
+
                 if (isset($_SESSION["array_cpu"])) {
-                    
+
                     echo "<select name='procesador_uce'>";
-                    
+
                     foreach ($_SESSION["array_cpu"] as $cpu) {
-                        
-                    echo "<option value='" . unserialize($cpu)->getNum_serie() . "'>" . unserialize($cpu)->getNum_serie() . "</option>";
-                    
+
+                        echo "<option value='" . unserialize($cpu)->getNum_serie() . "'>" . unserialize($cpu)->getNum_serie() . "</option>";
                     }
 
                     echo "</select><br>";
-                    
                 }
                 ?>
 
                 <label for="chasis_uce">Chasis usado: </label>
-               <?PHP
-                require_once 'CPU.php';
-                
+                <?PHP
+                require_once 'chasis_acorazado.php';
+
                 if (isset($_SESSION["array_chasis_acorazado"])) {
-                    
+
                     echo "<select name='chasis_uce'>";
-                    
+
                     foreach ($_SESSION["array_chasis_acorazado"] as $chasis) {
-                        
-                    echo "<option value='" . unserialize($chasis)->getNum_serie() . "'>" . unserialize($chasis)->getNum_serie() . "</option>";
-                    
+
+                        echo "<option value='" . unserialize($chasis)->getNum_serie() . "'>" . unserialize($chasis)->getNum_serie() . "</option>";
                     }
 
                     echo "</select><br>";
-                    
                 }
                 ?>
-                <input type="submit" name="boton_uce" value="Crear objeto"/>
+                <input type="submit" name="boton_uce" value="Crear objeto" <?PHP if(isset($_SESSION["HLL"])) echo "disabled"?>/>
 
             </fieldset>
 
-        </form>     
+        </form> 
+
+        <form method="POST" action="<?PHP $_SERVER["PHP_SELF"] ?>">
+
+            <input type="submit" name="boton_hll" value="Desencadenar HLL" />
+
+        </form>
 
     </body>
 </html>
