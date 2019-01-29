@@ -15,16 +15,24 @@ class CPU extends sistema_digital {
         $this->estado_operativo = "ON";
     }
     
+    function conmutar_Estado() {
+        parent::conmutar_Estado();
+    }
+    
+    function Scout_Finch() {
+        parent::Scout_Finch();
+    }
+    
+    public function getNum_serie() {
+        return parent::getNum_serie();
+    }
+    
     function getCategoria_CPU() {
         return $this->categoria_CPU;
     }
 
     function getVelocidad_CPU() {
         return $this->velocidad_CPU;
-    }
-    
-    public function getNum_serie() {
-        return parent::getNum_serie();
     }
 
 }

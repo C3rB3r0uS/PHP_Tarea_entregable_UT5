@@ -18,6 +18,14 @@ class enlazador extends sistema_digital {
         $this->estado_operativo = "ON";
     }
     
+    function conmutar_Estado() {
+        parent::conmutar_Estado();
+    }
+    
+    function Scout_Finch() {
+        parent::Scout_Finch();
+    }
+    
     function getProcesador() {
         return $this->procesador;
     }

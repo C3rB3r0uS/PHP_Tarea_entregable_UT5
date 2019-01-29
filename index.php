@@ -34,7 +34,7 @@ if (!$_POST) {
                 $objeto_sd = new sistema_digital($num_serie_sd, $instante_activacion_sd);
                 echo "<b>Se ha creado un objeto CPU </b><br>";
 
-                // Creo variable de sesión y lo referencio a un array que recoge a los objetos de esta clase.
+                // Creo variable de sesión y la inicializo como array
                 // Al estar limitado a un objeto del tipo "sistema digital", si la variable de sesión existe
                 // es que esta variable recoge el array con un objeto en su interior.
 
